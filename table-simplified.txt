@@ -1,0 +1,28 @@
+(v)
+c *
+cv *
+cc *
+ccv
+(ccc)
+cvv ->
+cvc
+(ccvv)
+ccvc
+(cvcv)
+cvcc
+ccvcv
+ccvcc *
+ccvccv
+ccvccc -> cc
+ccvcvv ->
+ccvcvc
+ccvccvv ->
+ccvccvc
+cvccv -> ccvcv
+cvccc -> ccvcc
+ccvcvcv -> cv
+ccvcvcc
+ccvccvcv -> ccvcv
+ccvccvcc -> ccvcvcc (next 2)
+ccvcvccv -> ccvccv
+ccvcvccc -> ccvcc
