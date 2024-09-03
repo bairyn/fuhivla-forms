@@ -4,7 +4,7 @@ cv *
 cc *
 ccv
 (ccc)
-cvv ->
+cvv -> 
 cvc
 (ccvv)
 ccvc
@@ -14,9 +14,9 @@ ccvcv
 ccvcc *
 ccvccv
 ccvccc -> cc
-ccvcvv ->
+ccvcvv -> 
 ccvcvc
-ccvccvv ->
+ccvccvv -> 
 ccvccvc
 cvccv -> ccvcv
 cvccc -> ccvcc
