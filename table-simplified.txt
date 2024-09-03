@@ -23,6 +23,6 @@ cvccc -> ccvcc
 ccvcvcv -> cv
 ccvcvcc
 ccvccvcv -> ccvcv
-ccvccvcc -> ccvcvcc (next 2)
+ccvccvcc -> ccvcvcc
 ccvcvccv -> ccvccv
 ccvcvccc -> ccvcc
