@@ -1,1 +1,1 @@
-Quick and dirty Lojban lujvo rafsi decomposition tables.
+Lojban lujvo rafsi decomposition tables.
