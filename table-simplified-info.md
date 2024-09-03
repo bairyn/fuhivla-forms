@@ -10,20 +10,20 @@ CLL section 4.7 defines the morphology of fu'ivla. They are brivla that are not 
 
 ### ‘brodauca’: fu'ivla
 
-For example, ‘brodauca’ uniquely follows the parser state path #17 (by line)
-(‘`ccvcvv -> `’) and then #3 (‘`cv *`’), making it a fu'ivla, since the `*`
+For example, ‘brodauca’ uniquely follows the parser state path #18 (by line)
+(‘`ccvcvv -> `’) and then #4 (‘`cv *`’), making it a fu'ivla, since the `*`
 indicates that without further text, it's a fu'ivla.
 
 ### ‘brodaucau’: lujvo
 
-But add ‘u’ at the end, and the path becomes 17 7 0 (‘`ccvcvv -> `’ ‘`cvv ->`’
+But add ‘u’ at the end, and the path becomes 18 8 1 (‘`ccvcvv -> `’ ‘`cvv ->`’
 ‘``’), reducing to the empty string, so ‘brodaucau’ is a lujvo.  It does not
 include 1 of the 4 normal fu'ivla forms with the right prefix, nor does it end
 in the fu'ivla tail form ‘cv’ with the right prefix.
 
 ### ‘brodacuca’: fu'ivla
 
-‘brodacuca’ has path 17 11 (‘`ccvcvv -> `’ ‘`cvv ->`’ ‘`(cvcv)`’), so even if
+‘brodacuca’ has path 18 12 (‘`ccvcvv -> `’ ‘`cvv ->`’ ‘`(cvcv)`’), so even if
 there are more characters after ‘cuca’, no matter what else comes after it (we
 can add anything valid that we want to add variants, like
 ‘brodacucafrobrodibordobroda’), we can stop right now and know the word is a
@@ -31,7 +31,7 @@ fu'ivla.
 
 ### ‘brodacraubacadafagajakalamanaporosotovoxozo’: fu'ivla
 
-Likewise ‘brodacraubacadafagajakalamanaporosotovoxozo’ has path 17 9 (‘`ccvcvv
+Likewise ‘brodacraubacadafagajakalamanaporosotovoxozo’ has path 18 10 (‘`ccvcvv
 -> `’ ‘`(ccvv)`’) followed by extra text, so no matter what comes after it
 (once we parse ‘brodacrau’, we know it's a fu'ivla), as long as it's otherwise
 a valid y-less brival, it's a fu'ivla.
