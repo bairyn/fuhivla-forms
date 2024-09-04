@@ -19,7 +19,7 @@ indicates that without further text, it's a fu'ivla.
 ### ‘brodaucau’: lujvo
 
 But add ‘u’ at the end, and the path becomes 18 8 1 (‘`ccvcvv -> `’ ‘`cvv ->`’
-‘``’), reducing to the empty string, so ‘brodaucau’ is a lujvo.  It does not
+‘’), reducing to the empty string, so ‘brodaucau’ is a lujvo.  It does not
 include 1 of the 4 normal fu'ivla forms with the right prefix, nor does it end
 in the fu'ivla tail form ‘cv’ with the right prefix.
 
