@@ -36,4 +36,4 @@ fu'ivla.
 Likewise ‘brodacraubacadafagajakalamanaporosotovoxozo’ has path 18 10 (‘`ccvcvv
 -> `’ ‘`(ccvv)`’) followed by extra text, so no matter what comes after it
 (once we parse ‘brodacrau’, we know it's a fu'ivla), as long as it's otherwise
-a valid y-less brival, it's a fu'ivla.
+a valid y-less brivla, it's a fu'ivla.
