@@ -176,7 +176,7 @@ fu'ivlaPState :: PState
 fu'ivlaPState = PState (cvv f f f) (cvc f f f) (ccv f f f) (cvcc f f f f) (ccvc f f f f) (cvccv f f f f f) (ccvcv f f f f f)
 
 -- pre-slinku'i:
--- Also, this would need to be updated when changing initial chain state to middle chain state (this observation fixes the TODO that was before middleState about this).
+-- Also, this would need to be updated when changing initial chain state to middle chain state.
 --startPState :: PState
 --startPState = PState (cvv t f f) (cvc t f f) (ccv t f f) (cvcc t f f f) (ccvc t f f f) (cvccv t f f f f) (ccvcv t f f f f)
 
@@ -332,8 +332,6 @@ startChainState = if' useSlinku'i startChainStateWithSlinku'i startChainStateIgn
 	where if' c t e = if c then t else e
 
 -- Start from an unknown location: any valid prefix can be prepended.
--- 2023-07-30 TODO FIXME: when this is the initial chain state, it's not the state where everything is capitalized as expected.  There's an issue somehow where with this.  EDIT 2024-09-09 fixed: I think you just forgot about startPState and the priority queue, and the first line is not necessarily the start state.  I added an update so it starts with a ‘^’ to indicate initial state  EDIT 2024-09-09 fixed: I think you just forgot about the priority queue, and the first line is not necessarily the start state.  I added an update so it starts with a ‘^’ to indicate initial state
--- 2024-09-09 (Note: this isn't used anywhere in the output of the main program.)
 middleChainState :: ChainState
 middleChainState = ChainState (cvv (s [Token CVVID []]) (s [Token CVVID [C]]) (s [Token CVVID [C, V]])) (cvc (s [Token CVCID []]) (s [Token CVCID [C]]) (s [Token CVCID [C, V]])) (ccv (s [Token CCVID []]) (s [Token CCVID [C]]) (s [Token CCVID [C, C]])) (cvcc (s [Token CVCCID []]) (s [Token CVCCID [C]]) (s [Token CVCCID [C, V]]) (s [Token CVCCID [C, V, C]])) (ccvc (s [Token CCVCID []]) (s [Token CCVCID [C]]) (s [Token CCVCID [C, C]]) (s [Token CCVCID [C, C, V]])) (cvccv (s [Token CVCCVID []]) (s [Token CVCCVID [C]]) (s [Token CVCCVID [C, V]]) (s [Token CVCCVID [C, V, C]]) (s [Token CVCCVID [C, V, C, C]])) (ccvcv (s [Token CCVCVID []]) (s [Token CCVCVID [C]]) (s [Token CCVCVID [C, C]]) (s [Token CCVCVID [C, C, V]]) (s [Token CCVCVID [C, C, V, C]]))
 	where n = []; s x = [x]
