@@ -54,9 +54,9 @@ impossible to decompose into lujvo rafsi (denote with parens), and O as an
 asterisk (can decompose if the right text is added but cannot if input ends
 there (as in ‘$’)).  The first line afterwards is like a B, which I leave as an
 empty line.  For the cv pattern word itself, trace the input characters leading
-to that state, and look at the right-hand side of the annotated transition line
-to see what that input character leads to.  ‘^’ denotes the initial parser
-state.
+to that state, and look at the left side of the annotated transition line to
+see what that the state is combined with an appended input character.  ‘^’
+denotes the initial parser state.
 
 Finally, after the slinku'i test is enabled, since a brivla that starts with a
 vowel is necessarily morphologically separate from preceding words, we manually
