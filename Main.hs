@@ -289,6 +289,7 @@ startChainState = ChainState (cvv (s [Token CVVID []]) n n) (cvc (s [Token CVCID
 
 -- Start from an unknown location: any valid prefix can be prepended.
 -- 2023-07-30 TODO FIXME: when this is the initial chain state, it's not the state where everything is capitalized as expected.  There's an issue somehow where with this.
+-- 2024-09-09 (Note: this isn't used anywhere in the output of the main program.)
 middleChainState :: ChainState
 middleChainState = ChainState (cvv (s [Token CVVID []]) (s [Token CVVID [C]]) (s [Token CVVID [C, V]])) (cvc (s [Token CVCID []]) (s [Token CVCID [C]]) (s [Token CVCID [C, V]])) (ccv (s [Token CCVID []]) (s [Token CCVID [C]]) (s [Token CCVID [C, C]])) (cvcc (s [Token CVCCID []]) (s [Token CVCCID [C]]) (s [Token CVCCID [C, V]]) (s [Token CVCCID [C, V, C]])) (ccvc (s [Token CCVCID []]) (s [Token CCVCID [C]]) (s [Token CCVCID [C, C]]) (s [Token CCVCID [C, C, V]])) (cvccv (s [Token CVCCVID []]) (s [Token CVCCVID [C]]) (s [Token CVCCVID [C, V]]) (s [Token CVCCVID [C, V, C]]) (s [Token CVCCVID [C, V, C, C]])) (ccvcv (s [Token CCVCVID []]) (s [Token CCVCVID [C]]) (s [Token CCVCVID [C, C]]) (s [Token CCVCVID [C, C, V]]) (s [Token CCVCVID [C, C, V, C]]))
 	where n = []; s x = [x]
