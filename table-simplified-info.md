@@ -10,6 +10,8 @@ CLL section 4.7 defines the morphology of fu'ivla. They are brivla that are not 
 
 ## Examples
 
+(TODO: after slinku'i fix, update the paths and ids.)
+
 ### ‘brodauca’: fu'ivla
 
 For example, ‘brodauca’ uniquely follows the parser state path #18 (by line)
