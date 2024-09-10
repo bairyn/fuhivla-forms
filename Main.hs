@@ -283,9 +283,27 @@ getChains = chains
 --data ChainState = ChainState CVVChainState CVCChainState CCVChainState CVCCChainState CCVCChainState CVCCVChainState CCVCVChainState deriving (Eq, Ord)
 -- Start from the beginning for each token.
 -- (The normal initial chain state.)
-startChainState :: ChainState
-startChainState = ChainState (cvv (s [Token CVVID []]) n n) (cvc (s [Token CVCID []]) n n) (ccv (s [Token CCVID []]) n n) (cvcc (s [Token CVCCID []]) n n n) (ccvc (s [Token CCVCID []]) n n n) (cvccv (s [Token CVCCVID []]) n n n n) (ccvcv (s [Token CCVCVID []]) n n n n)
+startChainStateIgnoreSlinku'i :: ChainState
+startChainStateIgnoreSlinku'i = ChainState (cvv (s [Token CVVID []]) n n) (cvc (s [Token CVCID []]) n n) (ccv (s [Token CCVID []]) n n) (cvcc (s [Token CVCCID []]) n n n) (ccvc (s [Token CCVCID []]) n n n) (cvccv (s [Token CVCCVID []]) n n n n) (ccvcv (s [Token CCVCVID []]) n n n n)
 	where n = []; s x = [x]
+
+-- 2024-09-09 I forgot to include the slinku'i test.  This version of startChainState incorporates it.
+-- CLL 4.7 defines the slinku'i test: a CV prefix should not make a lujvo.
+-- As before, but add 1 part: besides handling the case of no prefix, also
+-- handle the case that assumes a CV has already been parsed.
+-- Thus words like {ca} can unambiguously precede a brivla or fu'ivla without joining the word.
+startChainStateWithSlinku'i :: ChainState
+startChainStateWithSlinku'i = ChainState (cvv (s [Token CVVID []]) n (s [Token CVVID [C, V]])) (cvc (s [Token CVCID []]) n (s [Token CVCID [C, V]])) (ccv (s [Token CCVID []]) n n) (cvcc (s [Token CVCCID []]) n (s [Token CVCCID [C, V]]) n) (ccvc (s [Token CCVCID []]) n n n) (cvccv (s [Token CVCCVID []]) n (s [Token CVCCVID [C, V]]) n n) (ccvcv (s [Token CCVCVID []]) n n n n)
+	where n = []; s x = [x]
+
+-- slinku'i is part of the definition of fu'ivla (condition #3 in CLL 4.7), so
+-- this needs to be enabled.  The omission of the slinku'i test is now fixed (2024-09-09).
+useSlinku'i :: Bool
+useSlinku'i = True
+
+startChainState :: ChainState
+startChainState = if' useSlinku'i startChainStateWithSlinku'i startChainStateIgnoreSlinku'i
+	where if' c t e = if c then t else e
 
 -- Start from an unknown location: any valid prefix can be prepended.
 -- 2023-07-30 TODO FIXME: when this is the initial chain state, it's not the state where everything is capitalized as expected.  There's an issue somehow where with this.
