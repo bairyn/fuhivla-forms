@@ -61,9 +61,9 @@ denotes the initial parser state.
 Finally, after the slinku'i test is enabled, since a brivla that starts with a
 vowel is necessarily morphologically separate from preceding words, we manually
 exclude this line #2 case ad-hoc from the slinku'i test and revert it from ‘`v
--> `’ (L) back to its pre-slinku'i test ‘(v)’.  A valid brivla starting with a
-vowel is a fu'ivla even if it would _otherwise_ (i.e. if you dropped the ‘`.`’
-dot) fail the slinku'i test.
+-> `’ (L) back to its pre-slinku'i test ‘(.v)’ (with an added dot to manually
+indicate this).  A valid brivla starting with a vowel is a fu'ivla even if it
+would _otherwise_ (i.e. if you dropped the ‘`.`’ dot) fail the slinku'i test.
 
 ## Simplified table notes
 
