@@ -62,7 +62,7 @@ the following comprehensive fu'ivla conditions are true:
 
 ## Comprehensive fu'ivla parser state table
 
-[Comprehensive fu'ivla parser state table.](table-simplified.txt):
+[Comprehensive fu'ivla parser state table](table-simplified.txt):
 
 ```
 
