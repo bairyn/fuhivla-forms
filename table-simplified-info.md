@@ -27,7 +27,7 @@ parser state (one that leaves no possibility of a valid rafsi decomposition, by
 following the reductions listed in the table), according to the table, or 4)
 ending in 1 of the 4 fu'ivla tail forms (c, cv, cc, ccvcc) (only ‘cv’ ends in
 ‘v’, so only it is conseqential for fu'ivla determination), if hyphenization is
-ignored.  (For cases #2 and #3, the table includes the slinku'i test (condition
+ignored.  (For cases #3 and #4, the table includes the slinku'i test (condition
 #3 in CLL 4.7).)
 
 [table-simplified.txt](table-simplified.txt)
