@@ -18,9 +18,9 @@ import qualified Data.Set as S
 -- Optional arguments.
 -- {-
 import System.Environment
+useSystemEnv :: Bool
+useSystemEnv = True
 -- -}
-useSystemIO :: Bool
-useSystemIO = True
 
 main :: IO ()
 main = lujvoFormsMain
@@ -29,7 +29,7 @@ lujvoFormsMain :: IO ()
 lujvoFormsMain = do
 	((), isSimple) <- do
 		-- {-
-		if useSystemIO
+		if useSystemEnv
 			then do
 				isSimple <- ("--simple" `elem`) <$> getArgs
 				return ((), isSimple)
