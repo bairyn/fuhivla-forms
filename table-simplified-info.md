@@ -1,4 +1,6 @@
-# Comprehensive fu'ivla form
+# Comprehensive fu'ivla forms
+
+## fu'ivla-forms: comprehensive fu'ivla forms.
 
 Lojban ‘content words’ brivla have 3 forms: gismu, lujvo, and fu'ivla.  This
 project shows the comprehensive form of fu'ivla, which are the most flexible in
