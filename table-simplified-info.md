@@ -165,9 +165,9 @@ state path is 1 28 26 28 20 14 (‘’ ‘`ccv -> vccvccv`’ ‘`vccvccvcv -> `
 The initial subtext that puts us in a final fu'ivla parser state with 1 of the
 4 normal fu'ivla forms (‘cvcv’) is ‘brodacraubaca’
 
-# Other notes
+## Other notes
 
-## Simplified table creation
+### Simplified table creation
 
 The simplified table can be derived from the annotated table which is output by
 Main.hs after ignoring the first three lines and manually adding an empty first
@@ -185,7 +185,7 @@ denotes the initial parser state.
 
 The generation of this table is now automated with the ‘--simple’ flag.
 
-## Simplified table notes
+### Simplified table notes
 
 With the slinku'i test enabled, the rafsi decomposition tables _includes_ a
 hypothetical CV word before that we want to exclude, so for decompositions that
