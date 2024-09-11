@@ -62,7 +62,7 @@ the following comprehensive fu'ivla conditions are true:
 
 ## Comprehensive fu'ivla parser state table
 
-[table-simplified.txt](Comprehensive fu'ivla parser state table.)
+[Comprehensive fu'ivla parser state table.](table-simplified.txt)
 
 - `->` denotes a simplifying reduction, possibly to the empty string.
 - `*` denotes more input is needed, or else there is no lujvo rafsi decomposition.
