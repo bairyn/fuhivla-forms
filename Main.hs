@@ -1,7 +1,10 @@
 -- runhaskell '-package containers' Main.hs
+-- runhaskell '-package containers' Main.hs --simple
 {-# OPTIONS_GHC -fno-warn-tabs #-}  -- Support tab indentation better, for a better default of no warning if tabs are used: https://dmitryfrank.com/articles/indent_with_tabs_align_with_spaces .
 
--- TODO: minor enhancement: for X, maybe add a column to make it like table-annotated.txt, but there are just a few of those, so doing it manually is not a big deal here.
+-- Main.hs:
+-- Generate the comprehensive fu'ivla parser state table, optionally the
+-- annotated version.
 
 module Main where
 
@@ -12,10 +15,44 @@ import Data.Maybe
 import qualified Data.Map as M
 import qualified Data.Set as S
 
+-- Optional arguments.
+-- {-
+import System.Environment
+useSystemEnv :: Bool
+useSystemEnv = True
+-- -}
+
 main :: IO ()
-main = do
-	forM_ etransitions $ putStrLn . showExtendedTransition
+main = lujvoFormsMain
+
+lujvoFormsMain :: IO ()
+lujvoFormsMain = do
+	((), isSimple) <- do
+		-- {-
+		if useSystemEnv
+			then do
+				isSimple <- ("--simple" `elem`) <$> getArgs
+				return ((), isSimple)
+			else do
+		-- -}
+				isSimple <- return defaultShowSimpleNotAnnotated
+				return ((), isSimple)
+	lujvoFormsMain' isSimple
+
+lujvoFormsMain' :: Bool -> IO ()
+lujvoFormsMain' isSimple = do
+	when (not isSimple) $ do
+		--forM_ etransitions $ putStrLn . (showExtendedTransition' startPState)
+		putStrLn tableAnnotated
+	when isSimple $ do
+		putStrLn tableSimplified
 	return ()
+
+defaultShowSimpleNotAnnotated :: Bool
+defaultShowSimpleNotAnnotated = False
+
+tableAnnotated :: String
+tableAnnotated = intercalate "\n" . map (showExtendedTransition' startPState) $ etransitions
 
 data Transition = Transition PState Input PState deriving (Eq, Ord)
 
@@ -31,6 +68,16 @@ showTransition (Transition pstate input pstate') = (showPstate pstate) ++ " " ++
 showExtendedTransition :: ExtendedTransition -> String
 --showExtendedTransition (ExtendedTransition transition stepKind chains) = (showTransition transition) ++ "  " ++ (showStepKind stepKind) ++ (prefixNonempty " " $ showChains chains)
 showExtendedTransition (ExtendedTransition transition stepKind chains) = (showTransition transition) ++ "  " ++ (showStepKind stepKind) ++ (prefixNonempty " " $ showChainState chains)
+
+-- A variant that prefixes the initial parser state with an asterisk.
+showExtendedTransition' :: PState -> ExtendedTransition -> String
+--showExtendedTransition (ExtendedTransition transition stepKind chains) = (showTransition transition) ++ "  " ++ (showStepKind stepKind) ++ (prefixNonempty " " $ showChains chains)
+showExtendedTransition' theStartPState (ExtendedTransition transition@(Transition from _ _) stepKind chains) = prefix ++ (showTransition transition) ++ "  " ++ (showStepKind stepKind) ++ (prefixNonempty " " $ showChainState chains)
+	where
+		prefix :: String
+		prefix
+			| from == theStartPState = "^"
+			| otherwise              = " "
 
 prefixNonempty :: String -> String -> String
 prefixNonempty _      s@[] = s
@@ -165,10 +212,25 @@ ccvcv = CCVCVState
 fu'ivlaPState :: PState
 fu'ivlaPState = PState (cvv f f f) (cvc f f f) (ccv f f f) (cvcc f f f f) (ccvc f f f f) (cvccv f f f f f) (ccvcv f f f f f)
 
-startPState :: PState
-startPState = PState (cvv t f f) (cvc t f f) (ccv t f f) (cvcc t f f f) (ccvc t f f f) (cvccv t f f f f) (ccvcv t f f f f)
+-- pre-slinku'i:
+-- Also, this would need to be updated when changing initial chain state to middle chain state.
+--startPState :: PState
+--startPState = PState (cvv t f f) (cvc t f f) (ccv t f f) (cvcc t f f f) (ccvc t f f f) (cvccv t f f f f) (ccvcv t f f f f)
 
--- TODO:
+startPState :: PState
+startPState = startPState' initialChainState
+
+startPState' :: ChainState -> PState
+startPState' (ChainState cvvState cvcState ccvState cvccState ccvcState cvccvState ccvcvState) =
+	PState
+		(fmapCVVState   (not . null) cvvState)
+		(fmapCVCState   (not . null) cvcState)
+		(fmapCCVState   (not . null) ccvState)
+		(fmapCVCCState  (not . null) cvccState)
+		(fmapCCVCState  (not . null) ccvcState)
+		(fmapCVCCVState (not . null) cvccvState)
+		(fmapCCVCVState (not . null) ccvcvState)
+
 type CVVChainState   = CVVState   [Chain]
 type CVCChainState   = CVCState   [Chain]
 type CCVChainState   = CCVState   [Chain]
@@ -176,8 +238,6 @@ type CVCCChainState  = CVCCState  [Chain]
 type CCVCChainState  = CCVCState  [Chain]
 type CVCCVChainState = CVCCVState [Chain]
 type CCVCVChainState = CCVCVState [Chain]
-
---data Chain = TODO deriving (Eq, Ord)
 
 data TokenID
 	= CVVID
@@ -283,13 +343,29 @@ getChains = chains
 --data ChainState = ChainState CVVChainState CVCChainState CCVChainState CVCCChainState CCVCChainState CVCCVChainState CCVCVChainState deriving (Eq, Ord)
 -- Start from the beginning for each token.
 -- (The normal initial chain state.)
-startChainState :: ChainState
-startChainState = ChainState (cvv (s [Token CVVID []]) n n) (cvc (s [Token CVCID []]) n n) (ccv (s [Token CCVID []]) n n) (cvcc (s [Token CVCCID []]) n n n) (ccvc (s [Token CCVCID []]) n n n) (cvccv (s [Token CVCCVID []]) n n n n) (ccvcv (s [Token CCVCVID []]) n n n n)
+startChainStateIgnoreSlinku'i :: ChainState
+startChainStateIgnoreSlinku'i = ChainState (cvv (s [Token CVVID []]) n n) (cvc (s [Token CVCID []]) n n) (ccv (s [Token CCVID []]) n n) (cvcc (s [Token CVCCID []]) n n n) (ccvc (s [Token CCVCID []]) n n n) (cvccv (s [Token CVCCVID []]) n n n n) (ccvcv (s [Token CCVCVID []]) n n n n)
 	where n = []; s x = [x]
 
+-- 2024-09-09 I forgot to include the slinku'i test.  This version of startChainState incorporates it.
+-- CLL 4.7 defines the slinku'i test: a CV prefix should not make a lujvo.
+-- As before, but add 1 part: besides handling the case of no prefix, also
+-- handle the case that assumes a CV has already been parsed.
+-- Thus words like {ca} can unambiguously precede a brivla or fu'ivla without joining the word.
+startChainStateWithSlinku'i :: ChainState
+startChainStateWithSlinku'i = ChainState (cvv (s [Token CVVID []]) n (s [Token CVVID [C, V]])) (cvc (s [Token CVCID []]) n (s [Token CVCID [C, V]])) (ccv (s [Token CCVID []]) n n) (cvcc (s [Token CVCCID []]) n (s [Token CVCCID [C, V]]) n) (ccvc (s [Token CCVCID []]) n n n) (cvccv (s [Token CVCCVID []]) n (s [Token CVCCVID [C, V]]) n n) (ccvcv (s [Token CCVCVID []]) n n n n)
+	where n = []; s x = [x]
+
+-- slinku'i is part of the definition of fu'ivla (condition #3 in CLL 4.7), so
+-- this needs to be enabled.  The omission of the slinku'i test is now fixed (2024-09-09).
+useSlinku'i :: Bool
+useSlinku'i = True
+
+startChainState :: ChainState
+startChainState = if' useSlinku'i startChainStateWithSlinku'i startChainStateIgnoreSlinku'i
+	where if' c t e = if c then t else e
+
 -- Start from an unknown location: any valid prefix can be prepended.
--- 2023-07-30 TODO FIXME: when this is the initial chain state, it's not the state where everything is capitalized as expected.  There's an issue somehow where with this.
--- 2024-09-09 (Note: this isn't used anywhere in the output of the main program.)
 middleChainState :: ChainState
 middleChainState = ChainState (cvv (s [Token CVVID []]) (s [Token CVVID [C]]) (s [Token CVVID [C, V]])) (cvc (s [Token CVCID []]) (s [Token CVCID [C]]) (s [Token CVCID [C, V]])) (ccv (s [Token CCVID []]) (s [Token CCVID [C]]) (s [Token CCVID [C, C]])) (cvcc (s [Token CVCCID []]) (s [Token CVCCID [C]]) (s [Token CVCCID [C, V]]) (s [Token CVCCID [C, V, C]])) (ccvc (s [Token CCVCID []]) (s [Token CCVCID [C]]) (s [Token CCVCID [C, C]]) (s [Token CCVCID [C, C, V]])) (cvccv (s [Token CVCCVID []]) (s [Token CVCCVID [C]]) (s [Token CVCCVID [C, V]]) (s [Token CVCCVID [C, V, C]]) (s [Token CVCCVID [C, V, C, C]])) (ccvcv (s [Token CCVCVID []]) (s [Token CCVCVID [C]]) (s [Token CCVCVID [C, C]]) (s [Token CCVCVID [C, C, V]]) (s [Token CCVCVID [C, C, V, C]]))
 	where n = []; s x = [x]
@@ -438,3 +514,154 @@ etransitions = start ++ unfoldr step seed
 			]
 
 -- showPstate and showChains are later.
+
+-- ----------------------------------------------------------------
+-- Simplified paths.
+
+tableSimplified :: String
+tableSimplified = intercalate "\n" . map showAnalyzedStringCV $ paths
+
+data CharCV = V_ | C_ deriving (Eq, Ord)
+type StringCV = [CharCV]
+type AggregateParserState = StringCV
+
+-- We'll use AnalyzedStringCV directly in a bit instead of SimplifiedTransition.
+data SimplifiedTransition = SimplifiedTransition AggregateParserState SimpleAnalysis
+	deriving (Eq, Ord)
+deconsSimplifiedTransition :: (AggregateParserState -> SimpleAnalysis -> r) -> SimplifiedTransition -> r
+deconsSimplifiedTransition withSimplefidieTransition (SimplifiedTransition ps a) = withSimplefidieTransition ps a
+as2st :: AnalyzedStringCV -> SimplifiedTransition
+as2st (ps, a) = SimplifiedTransition ps a
+st2as :: SimplifiedTransition -> AnalyzedStringCV
+st2as st = deconsSimplifiedTransition (,) st
+
+-- Loop back to SimplifiedTransition.  (See F-algebras and catamorphisms to
+-- understand the the ‘F’ idiom here.)
+type SimpleAnalysis = SimpleAnalysisF AggregateParserState
+
+-- | Given a cvv or v or ccv state parsed so far, what do we know about this
+-- string given the extended transitions (producing table-annotated.txt) we
+-- already produced above?
+--
+-- SimpleB: Corresponds to a ‘B’ (‘both’) line.  This is a new, unique parser
+-- state, and more input could change the state.  If it ends now with no more
+-- input, there is a lujvo rafsi decomposition.
+--
+-- SimpleX: fu'ivla form.
+--
+-- SimpleO: fu'ivla form if no more input, else it's like SimpleB and brings us
+--          to a new state. upon more characters.
+--
+-- SimpleL: Corresponds ta an ‘L’ line.  Reduce to a simpler state that is equivalent.
+data SimpleAnalysisF ps =
+	  SimpleB  -- ^ New string represents a unique parser state.
+	| SimpleX  -- ^ Fu'ivla form: if it's a valid brivla, it's a fu'ivla,
+	           --   whether it ends now or there's more input.
+	           --   (Denoted with parens.)
+	| SimpleO  -- ^ fu'ivla form _only_ if it ends now with no more input, but
+	           --   otherwise the next character brings it to a new parser
+	           --   state ('AggregateParserState'), so e.g. if the parser state
+	           --   is ‘vccv’ with slinku'i, then parsing a next char as ‘v’
+	           --   would bring us to ‘vccvv’, at 'SimpleX'.  We could then
+	           --   remain there for the rest of the (valid) parse.
+	           --   (Denoted with an asterisk.)
+	| SimpleL ps  -- ^ This parser state is equivalent to a previous, shorter
+	           --   parser state ('AggregateParserState'), so once we have this
+	           --   string, we can replace the parser state with the shorter,
+	           --   simpler one.  (‘Loopback’.)
+	           --   (Denoted with ‘-> <simpler>’)
+	deriving (Eq, Ord)
+deconsSimpleAnalysisF :: r -> r -> r -> (ps -> r) -> SimpleAnalysisF ps -> r
+deconsSimpleAnalysisF withSimpleB _ _ _ SimpleB      = withSimpleB
+deconsSimpleAnalysisF _ withSimpleX _ _ SimpleX      = withSimpleX
+deconsSimpleAnalysisF _ _ withSimpleO _ SimpleO      = withSimpleO
+deconsSimpleAnalysisF _ _ _ withSimpleL (SimpleL ps) = withSimpleL ps
+
+type AnalyzedStringCV = (AggregateParserState, SimpleAnalysis)
+
+paths :: [AnalyzedStringCV]
+paths = paths' etransitions' startPState
+	where
+		etransitions' = drop 3 etransitions
+
+data State s a = State (s -> (a, s))
+deconsState :: ((s -> (a, s)) -> r) -> State s a -> r
+deconsState withState (State f) = withState f
+instance Functor (State s) where
+	fmap :: (a -> b) -> (State s a -> State s b)
+	fmap f fs = State $ \s -> let (a, s') = unwrapState fs s in (f a, s')
+		where unwrapState = deconsState id
+instance Applicative (State s) where
+	pure a = State $ \s -> (a, s)
+	(<*>) :: State s (a -> b) -> (State s a -> State s b)
+	(<*>) fs = \gs ->
+		State $ \s ->
+			let (f, s')  = unwrapState fs s
+			    (a, s'') = unwrapState gs s'
+			in  (f a, s'')
+		where unwrapState = deconsState id
+instance Monad (State s) where
+	return = pure
+	(State f) >>= g =
+		State $
+			\s -> let (a, s') = f s
+			      in  deconsState id (g a) s'
+
+get :: State s s
+get = State $ \s -> (s, s)
+put :: s -> State s ()
+put s = State $ \_ -> ((), s)
+modify :: (s -> s) -> State s ()
+modify f = State $ \s -> ((), f s)
+
+paths' :: [ExtendedTransition] -> PState -> [AnalyzedStringCV]
+paths' extendedTransitions theStartPState = (prefix ++) . flip evalState initialState $ mapM analyze extendedTransitions
+	where
+		-- Manual starting line, the first ‘from’ (we return toStr, not
+		-- fromStr, at each step).  Empty string.
+		prefix :: [AnalyzedStringCV]
+		prefix = [([], SimpleB)]
+
+		i2c :: Input -> CharCV
+		i2c V = V_
+		i2c C = C_
+		i2c E = error "INTERNAL ERROR: Unexpected end of input enumerating simple paths."
+		unreverse :: AnalyzedStringCV -> AnalyzedStringCV
+		unreverse (s, a) = (reverse s, a)
+		evalState :: State s a -> s -> a
+		evalState fs s = fst $ deconsState id fs s
+		initialState :: M.Map PState StringCV
+		initialState = M.singleton theStartPState []
+		doNotUpdate :: StringCV -> StringCV -> StringCV
+		doNotUpdate new_value old_value = old_value
+
+		learnString :: (StringCV -> SimpleAnalysis) -> PState -> CharCV -> PState -> State (M.Map PState StringCV) AnalyzedStringCV
+		learnString a from c to = do
+			knownStrings <- get
+			let errMsg = "INTERNAL ERROR: unknown past string " ++ showPstate from
+			let fromStr = M.findWithDefault (error errMsg) from knownStrings
+			let toStr = c : fromStr
+			let knownStrings' = M.insertWith doNotUpdate to toStr knownStrings
+			put knownStrings'
+			let loopbackErrMsg = "INTERNAL ERROR: unknown loopback string " ++ showPstate to
+			let loopbackStr = M.findWithDefault (error loopbackErrMsg) to knownStrings
+			return (reverse toStr, a $ reverse loopbackStr)
+		o = const
+		analyze :: ExtendedTransition -> State (M.Map PState StringCV) AnalyzedStringCV
+		analyze (ExtendedTransition (Transition from c to) B _) = learnString (o SimpleB) from (i2c c) to
+		analyze (ExtendedTransition (Transition from c to) X _) = learnString (o SimpleX) from (i2c c) to
+		analyze (ExtendedTransition (Transition from c to) O _) = learnString (o SimpleO) from (i2c c) to
+		analyze (ExtendedTransition (Transition from c to) L _) = learnString SimpleL     from (i2c c) to
+
+charCV2char :: CharCV -> Char
+charCV2char C_ = 'c'
+charCV2char V_ = 'v'
+
+showStringCV :: StringCV -> String
+showStringCV = map charCV2char
+
+showAnalyzedStringCV :: AnalyzedStringCV -> String
+showAnalyzedStringCV (str, SimpleB) = showStringCV str
+showAnalyzedStringCV (str, SimpleX) = "(" ++ showStringCV str ++ ")"
+showAnalyzedStringCV (str, SimpleO) = showStringCV str ++ " *"
+showAnalyzedStringCV (str, SimpleL simpleStr) = showStringCV str ++ " -> " ++ showStringCV simpleStr
