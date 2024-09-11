@@ -8,30 +8,52 @@ CLL section 4.7 defines the morphology of fu'ivla. They are brivla that are not 
 - `*` denotes more input is needed, or else there is no lujvo rafsi decomposition.
 - `(…)` denotes a fu'ivla form: there exists no lujvo rafsi decomposition.
 
-## Examples
-
-(TODO: after slinku'i fix, update the paths and ids.)
+## Examples.
 
 ### ‘brodauca’: fu'ivla
 
-For example, ‘brodauca’ uniquely follows the parser state path #18 (by line)
-(‘`ccvcvv -> `’) and then #4 (‘`cv *`’), making it a fu'ivla, since the `*`
-indicates that without further text, it's a fu'ivla.
+‘brodacau’ uniquely follows a given parser state path, which ends up making it
+a fu'ivla, since the `*` in state #6 that the parser ends in indicates that
+without further text, it's a fu'ivla.
+
+With slinku'i enabled, then skipping non-final B parser states, the parser
+state path is 1 28 26 6 (‘’ ‘`ccv -> vccvccv`’ ‘`vccvccvcv -> `’ ‘`vcv *`’): start, consume 3 characters, then 2, then 3.
+
+(If the state between every character is counted, then the parser state path is
+1 3 25 28 21 26 2 5 6 (‘’ ‘`c`’ ‘`cc`’ ‘`ccv -> vccvccv`’ ‘`vccvccvc`’  ‘`vccvccvcv -> `’ ‘`v`’ ‘`vc`’ ‘`vcv *`’).)
+
+Note the asterisk: as 6 is the final state, it's a fu'ivla.
 
 ### ‘brodaucau’: lujvo
 
-But add ‘u’ at the end, and the path becomes 18 8 1 (‘`ccvcvv -> `’ ‘`cvv ->`’
-‘’), reducing to the empty string, so ‘brodaucau’ is a lujvo.  It does not
-include 1 of the 4 normal fu'ivla forms with the right prefix, nor does it end
-in the fu'ivla tail form ‘cv’ with the right prefix.
+But add ‘u’ at the end, and the parser after state #6 (on line #6 in the simple
+table) ends up in state #10, indicating there exists a lujvo rafsi
+decomposition.  State #10 is a normal parser state, not one with ‘`*`’ or
+parens.  Thus ‘brodaucau’ does not include 1 of the 4 normal fu'ivla forms with
+the right prefix, nor does it end in the fu'ivla tail form ‘cv’ with the right
+prefix.
+
+With slinku'i enabled, then skipping non-final B parser states, the parser
+state path is 1 28 26 10 (‘’ ‘`ccv -> vccvccv`’ ‘`vccvccvcv -> `’ ‘`vcvv -> v`’): start, consume 3 characters, then 2, then 4.
+
+(If the state between every character is counted, then the parser state path is
+1 3 25 28 21 26 2 5 6 10 (‘’ ‘`c`’ ‘`cc`’ ‘`ccv -> vccvccv`’ ‘`vccvccvc`’  ‘`vccvccvcv -> `’ ‘`v`’ ‘`vc`’ ‘`vcv *`’ ‘`vcvv -> v`’).)
 
 ### ‘brodacuca’: fu'ivla
 
-‘brodacuca’ has path 18 12 (‘`ccvcvv -> `’ ‘`cvv ->`’ ‘`(cvcv)`’), so even if
-there are more characters after ‘cuca’, no matter what else comes after it (we
-can add anything valid that we want to add variants, like
-‘brodacucafrobrodibordobroda’), we can stop right now and know the word is a
+‘brodacuca’ when parsed ends in state #14, corresponding to 1 of the 4 normal
+fu'ivla forms (‘cvcv’).  Even if there are more characters after ‘cuca’, no
+matter what else comes after it provided it's still a valid y-less brivla, it's
+still a fu'ivla (for example, we could add an arbitrary suffix making a word
+like ‘brodacucafrobrodibordobroda’, and we know it's still a fu'ivla).  This
+word has 1 of the 4 normal fu'ivla forms with the right prefix, so it's a
 fu'ivla.
+
+With slinku'i enabled, then skipping non-final B parser states, the parser
+state path is 1 28 26 24 14 (‘’ ‘`ccv -> vccvccv`’ ‘`vccvccvcv -> `’ ‘`cv -> vcv`’ ‘`(vcvcv)`’): start, consume 3 characters, then 2, then 2, then 2.
+
+(If the state between every character is counted, then the parser state path is
+1 3 25 28 21 26 3 24 11 14 (‘’ ‘`c`’ ‘`cc`’ ‘`ccv -> vccvccv`’ ‘`vccvccvc`’  ‘`vccvccvcv -> `’ ‘`c`’ ‘`cv -> vcv`’ ‘`vcvc`’ ‘`(vcvcv)`’).)
 
 ### ‘brodacraubacadafagajakalamanaporosotovoxozo’: fu'ivla
 
@@ -39,6 +61,24 @@ Likewise ‘brodacraubacadafagajakalamanaporosotovoxozo’ has path 18 10 (‘`c
 -> `’ ‘`(ccvv)`’) followed by extra text, so no matter what comes after it
 (once we parse ‘brodacrau’, we know it's a fu'ivla), as long as it's otherwise
 a valid y-less brivla, it's a fu'ivla.
+
+#### Slinku'i path: ‘brodacraubacadafagajakalamanaporosotovoxozo’.
+
+Likewise ‘brodacraubacadafagajakalamanaporosotovoxozo’ includes 1 of 4 the 4
+normal fu'ivla forms (‘cvcv’) with the right prefix followed by extra text, so no
+matter what comes after it, as long as it's otherwise a valid y-less brival,
+it's a fu'ivla; once we parse ‘brodacrau’, we know it's a fu'ivla.  It ends in
+state (line) #TODO.
+
+With slinku'i enabled, then skipping non-final B parser states, the parser
+state path is 1 28 26 28 20 14 (‘’ ‘`ccv -> vccvccv`’ ‘`vccvccvcv -> `’ ‘`ccv -> vccvccv`’ ‘`vccvccvv -> v`’ ‘`(vcvcv)`’): start, consume 3 characters, then 2, then 3, then 1, then 4.
+
+(If the state between every character is counted, then the parser state path is
+1 3 25 28 21 26 3 25 28 20 5 6 11 14 14 14 … 14 (‘’ ‘`c`’ ‘`cc`’ ‘`ccv -> vccvccv`’ ‘`vccvccvc`’ ‘`vccvccvcv -> `’ ‘`c`’ ‘`cc`’ ‘`ccv -> vccvccv`’ ‘`vccvccvv -> v`’ ‘`vc *`’ ‘`vcv *`’ ‘`vcvc`’ ‘`(vcvcv)`’ ‘`(vcvcv)`’ ‘`(vcvcv)`’ … ‘`(vcvcv)`’).
+(Each character after in an X state preserves the parser state in 14.))
+
+The initial subtext that puts us in a final fu'ivla parser state with 1 of the
+4 normal fu'ivla forms (‘cvcv’) is ‘brodacraubaca’
 
 # Other notes
 
