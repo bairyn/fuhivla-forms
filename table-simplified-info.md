@@ -100,7 +100,7 @@ ccc -> vccvcc
 - `*` denotes more input is needed, or else there is no lujvo rafsi decomposition.
 - `(…)` denotes a fu'ivla form: there exists no lujvo rafsi decomposition.
 
-## Examples.
+## Examples
 
 ### ‘brodauca’: fu'ivla
 
