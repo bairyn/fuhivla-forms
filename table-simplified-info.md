@@ -4,7 +4,7 @@
 
 Lojban ‘content words’ brivla have 3 forms: gismu, lujvo, and fu'ivla.  This
 project shows the comprehensive form of fu'ivla, which are the most flexible in
-terms of morphological structure and lettering.  (gismu are simple CVCCV or
+terms of morphological structure and lettering.  (gismu are simple CVC/CV or
 CCVCV form brivla, and they are root words for lujvo, which are structured as
 chains of other words or rafsi.  Rafsi are the variants of gismu that can
 include shorter affix variants.)
