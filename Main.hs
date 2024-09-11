@@ -2,8 +2,6 @@
 -- runhaskell '-package containers' Main.hs --simple
 {-# OPTIONS_GHC -fno-warn-tabs #-}  -- Support tab indentation better, for a better default of no warning if tabs are used: https://dmitryfrank.com/articles/indent_with_tabs_align_with_spaces .
 
--- TODO: minor enhancement: for X, maybe add a column to make it like table-annotated.txt, but there are just a few of those, so doing it manually is not a big deal here.
-
 module Main where
 
 import Control.Monad
