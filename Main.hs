@@ -633,6 +633,8 @@ paths' extendedTransitions theStartPState = (prefix ++) . map unreverse . flip e
 		evalState fs s = fst $ deconsState id fs s
 		initialState :: M.Map PState StringCV
 		initialState = M.singleton theStartPState []
+		doNotUpdate :: StringCV -> StringCV -> StringCV
+		doNotUpdate new_value old_value = old_value
 
 		learnString :: (StringCV -> SimpleAnalysis) -> PState -> CharCV -> PState -> State (M.Map PState StringCV) AnalyzedStringCV
 		learnString a from c to = do
@@ -640,7 +642,7 @@ paths' extendedTransitions theStartPState = (prefix ++) . map unreverse . flip e
 			let errMsg = "INTERNAL ERROR: unknown past string " ++ showPstate from
 			let fromStr = M.findWithDefault (error errMsg) from knownStrings
 			let toStr = c : fromStr
-			let knownStrings' = M.insert to toStr knownStrings
+			let knownStrings' = M.insertWith doNotUpdate to toStr knownStrings
 			put knownStrings'
 			let loopbackErrMsg = "INTERNAL ERROR: unknown loopback string " ++ showPstate to
 			let loopbackStr = M.findWithDefault (error loopbackErrMsg) to knownStrings
