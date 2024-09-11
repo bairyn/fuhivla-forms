@@ -17,13 +17,13 @@ vccvcv ->
 vccvcc *
 vccvccv
 vccvccc -> ccv
-vccvccvv -> vvcv
+vccvccvv -> v
 vccvccvc
-vcvccv -> vcvccv
+vcvccv -> 
 vcvccc -> ccvccv
 cv -> vcv
 cc
-vccvccvcv -> vccvcv
+vccvccvcv -> 
 vccvccvcc -> cc
-vccvccvccv -> vccvccv
-vccvccvccc -> cccvcv
+ccv -> vccvccv
+ccc -> ccvccv
