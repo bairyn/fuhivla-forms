@@ -1,6 +1,6 @@
 # Comprehensive fu'ivla forms
 
-## fu'ivla-forms: comprehensive fu'ivla forms.
+## fu'ivla-forms: comprehensive fu'ivla forms
 
 Lojban ‘content words’ brivla have 3 forms: gismu, lujvo, and fu'ivla.  This
 project shows the comprehensive form of fu'ivla, which are the most flexible in
@@ -122,7 +122,7 @@ Likewise ‘brodacraubacadafagajakalamanaporosotovoxozo’ has path 18 10 (‘`c
 (once we parse ‘brodacrau’, we know it's a fu'ivla), as long as it's otherwise
 a valid y-less brivla, it's a fu'ivla.
 
-#### Slinku'i path: ‘brodacraubacadafagajakalamanaporosotovoxozo’.
+#### Slinku'i path: ‘brodacraubacadafagajakalamanaporosotovoxozo’
 
 Likewise ‘brodacraubacadafagajakalamanaporosotovoxozo’ includes 1 of 4 the 4
 normal fu'ivla forms (‘cvcv’) with the right prefix followed by extra text, so no
