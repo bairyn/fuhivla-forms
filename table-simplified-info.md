@@ -98,7 +98,7 @@ to that state, and look at the left side of the annotated transition line to
 see what that the state is combined with an appended input character.  ‘^’
 denotes the initial parser state.
 
-TODO: possibly more info.
+The generation of this table is now automated with the ‘--simple’ flag.
 
 ## Simplified table notes
 
