@@ -616,7 +616,7 @@ modify :: (s -> s) -> State s ()
 modify f = State $ \s -> ((), f s)
 
 paths' :: [ExtendedTransition] -> PState -> [AnalyzedStringCV]
-paths' extendedTransitions theStartPState = (prefix ++) . map unreverse . flip evalState initialState $ mapM analyze extendedTransitions
+paths' extendedTransitions theStartPState = (prefix ++) . flip evalState initialState $ mapM analyze extendedTransitions
 	where
 		-- Manual starting line, the first ‘from’ (we return toStr, not
 		-- fromStr, at each step).  Empty string.
@@ -646,7 +646,7 @@ paths' extendedTransitions theStartPState = (prefix ++) . map unreverse . flip e
 			put knownStrings'
 			let loopbackErrMsg = "INTERNAL ERROR: unknown loopback string " ++ showPstate to
 			let loopbackStr = M.findWithDefault (error loopbackErrMsg) to knownStrings
-			return (toStr, a loopbackStr)
+			return (reverse toStr, a $ reverse loopbackStr)
 		o = const
 		analyze :: ExtendedTransition -> State (M.Map PState StringCV) AnalyzedStringCV
 		analyze (ExtendedTransition (Transition from c to) B _) = learnString (o SimpleB) from (i2c c) to
