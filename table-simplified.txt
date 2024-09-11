@@ -16,14 +16,14 @@ vcvcc
 vccvcv -> 
 vccvcc *
 vccvccv
-vccvccc -> ccv
+vccvccc -> vcc
 vccvccvv -> v
 vccvccvc
 vcvccv -> 
-vcvccc -> ccvccv
+vcvccc -> vccvcc
 cv -> vcv
 cc
 vccvccvcv -> 
 vccvccvcc -> cc
 ccv -> vccvccv
-ccc -> ccvccv
+ccc -> vccvcc
