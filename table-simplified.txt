@@ -1,1 +1,29 @@
-TODO
+
+v
+c
+(vv)
+vc *
+vcv *
+vcc *
+vccv
+(vccc)
+vcvv -> v
+vcvc
+(vccvv)
+vccvc
+(vcvcv)
+vcvcc
+vccvcv -> 
+vccvcc *
+vccvccv
+vccvccc -> ccv
+vccvccvv -> vvcv
+vccvccvc
+vcvccv -> vcvccv
+vcvccc -> ccvccv
+cv -> vcv
+cc
+vccvccvcv -> vccvcv
+vccvccvcc -> cc
+vccvccvccv -> vccvccv
+vccvccvccc -> cccvcv
