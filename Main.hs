@@ -2,6 +2,10 @@
 -- runhaskell '-package containers' Main.hs --simple
 {-# OPTIONS_GHC -fno-warn-tabs #-}  -- Support tab indentation better, for a better default of no warning if tabs are used: https://dmitryfrank.com/articles/indent_with_tabs_align_with_spaces .
 
+-- Main.hs:
+-- Generate the comprehensive fu'ivla parser state table, optionally the
+-- annotated version.
+
 module Main where
 
 import Control.Monad
