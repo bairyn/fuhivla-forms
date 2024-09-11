@@ -227,7 +227,6 @@ startPState' (ChainState cvvState cvcState ccvState cvccState ccvcState cvccvSta
 		(fmapCVCCVState (not . null) cvccvState)
 		(fmapCCVCVState (not . null) ccvcvState)
 
--- TODO:
 type CVVChainState   = CVVState   [Chain]
 type CVCChainState   = CVCState   [Chain]
 type CCVChainState   = CCVState   [Chain]
@@ -235,8 +234,6 @@ type CVCCChainState  = CVCCState  [Chain]
 type CCVCChainState  = CCVCState  [Chain]
 type CVCCVChainState = CVCCVState [Chain]
 type CCVCVChainState = CCVCVState [Chain]
-
---data Chain = TODO deriving (Eq, Ord)
 
 data TokenID
 	= CVVID
