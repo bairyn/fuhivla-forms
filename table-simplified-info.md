@@ -149,18 +149,11 @@ state path is 1 28 26 24 14 (‘’ ‘`ccv -> vccvccv`’ ‘`vccvccvcv -> `’
 
 ### ‘brodacraubacadafagajakalamanaporosotovoxozo’: fu'ivla
 
-Likewise ‘brodacraubacadafagajakalamanaporosotovoxozo’ has path 18 10 (‘`ccvcvv
--> `’ ‘`(ccvv)`’) followed by extra text, so no matter what comes after it
-(once we parse ‘brodacrau’, we know it's a fu'ivla), as long as it's otherwise
-a valid y-less brivla, it's a fu'ivla.
-
-#### Slinku'i path: ‘brodacraubacadafagajakalamanaporosotovoxozo’
-
 Likewise ‘brodacraubacadafagajakalamanaporosotovoxozo’ includes 1 of 4 the 4
-normal fu'ivla forms (‘cvcv’) with the right prefix followed by extra text, so no
-matter what comes after it, as long as it's otherwise a valid y-less brival,
-it's a fu'ivla; once we parse ‘brodacrau’, we know it's a fu'ivla.  It ends in
-state (line) #TODO.
+normal fu'ivla forms (‘cvcv’) with the right prefix followed by extra text, so
+no matter what comes after it, as long as it's otherwise a valid y-less brival,
+it's a fu'ivla; once we parse ‘brodacraubaca’, we know it's a fu'ivla.  It ends
+in state (line) #14.
 
 With slinku'i enabled, then skipping non-final B parser states, the parser
 state path is 1 28 26 28 20 14 (‘’ ‘`ccv -> vccvccv`’ ‘`vccvccvcv -> `’ ‘`ccv -> vccvccv`’ ‘`vccvccvv -> v`’ ‘`(vcvcv)`’): start, consume 3 characters, then 2, then 3, then 1, then 4.
