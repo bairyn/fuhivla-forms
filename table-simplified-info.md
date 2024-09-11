@@ -66,7 +66,7 @@ the following comprehensive fu'ivla conditions are true:
      beginning of the word, according to the [comprehensive fu'ivla parser
      state table](table-simplified.txt) (there are actually 3 others, but they
      would only end cmevla), ignoring CVV-rn hyphenization at the beginning of
-     the wordas in comprehensive condition #3.
+     the word as in comprehensive condition #3.
 
 ## Comprehensive fu'ivla parser state table
 
