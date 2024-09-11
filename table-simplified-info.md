@@ -50,15 +50,23 @@ the following comprehensive fu'ivla conditions are true:
 - 2) It starts with a vowel.
 - 3) It includes of the 1 of the 4 normal fu'ivla forms, with the right prefix
      from the beginning of the word, according to the [comprehensive fu'ivla
-     parser state table](table-simplified.txt):
+     parser state table](table-simplified.txt), ignoring CVV-rn hyphenization\*:
 	- 1) ‘v’
 	- 2) ‘ccc’
 	- 3) ‘ccvv’
 	- 4) ‘cvcv’
+     \*: CLL 4.5 specifies lujvo non-y hyphenization with ‘r’ or, if invalid,
+     ‘n’, at the beginning of the word after a CVV rafsi.  To handle this case,
+     if the first 4 letters have the form ‘cvvrcv’ (where letter 5 is not ‘n’)
+     or ‘cvvnrv’, remove the 4th letter, and then try decomposing into rafsi
+     according to the table.  No rafsi that starts with a hyphen letter ‘r’,
+     ‘n’, or ‘l’, has a consonant for its second letter, so you do not need to
+     consider the original.
 - 4) It ends in the fu'ivla tail form ‘cv’ with the right prefix from the
      beginning of the word, according to the [comprehensive fu'ivla parser
      state table](table-simplified.txt) (there are actually 3 others, but they
-     would only end cmevla).
+     would only end cmevla), ignoring CVV-rn hyphenization at the beginning of
+     the wordas in comprehensive condition #3.
 
 ## Comprehensive fu'ivla parser state table
 
