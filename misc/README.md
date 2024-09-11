@@ -1,8 +1,8 @@
 Tables without the slinku'i test.
 
-This may be more useful for investing chains without the hypothetical CV prefix
-used in the slinku'i test (see condition #3 in the fu'ivla definition provided
-by CLL 4.7).
+This may be more useful for investigating chains without the hypothetical CV
+prefix used in the slinku'i test (see condition #3 in the fu'ivla definition
+provided by CLL 4.7).
 
 ## Examples ignoring the slinku'i condition (condition #3).
 
