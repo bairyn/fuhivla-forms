@@ -199,3 +199,14 @@ With the slinku'i test enabled, the rafsi decomposition tables _includes_ a
 hypothetical CV word before that we want to exclude, so for decompositions that
 don't include a hypothetical prefix, the slinku'i-less table may be more
 suitable.
+
+### ilmentufa bugs
+
+ilmentufa is based on camxes, and the LLG ilmentufa Lojban parser fails to
+parse dipthongs in the expanded dipthong table in CLL 3.4 besides the first 4.
+However, CLL 4.7 specifies the expanded table, except for the last 2
+cmevla-only dipthongs, are permissible in fu'ivla, and even provides an example
+of a fu'ivla that uses the expanded dipthong table, which that parser fails to
+parse.  Thus ilmentufa fails to parse the valid fu'ivla {baufklia}, but it does
+parse {baufklai}.  The expanded dipthong table is useful in providing greater
+flexibility for fu'ivla.
