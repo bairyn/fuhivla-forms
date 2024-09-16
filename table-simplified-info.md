@@ -32,6 +32,13 @@ ignored.  (For cases #3 and #4, the table includes the slinku'i test (condition
 
 [table-simplified.txt](table-simplified.txt)
 
+This project is useful for understanding the comprehensive fu'ivla form (what
+forms make a fu'ivla) and making arbitrary fu'ivla.  See also
+<https://mw.lojban.org/papri/type_4_fu%27ivla>.
+
+One of the its main discoveries is identifying the 4 normal fu'ivla forms (and
+the fu'ivla tail form ‘cv’).
+
 ## Comprehensive fu'ivla form conditions
 
 If a word is a valid brivla without ‘y’, it is a fu'ivla iff at least one of
