@@ -48,9 +48,9 @@ the following comprehensive fu'ivla conditions are true:
   distinction between CC and C/C in CLL 4.1, and also notes about consonant
   triples in CLL 4.7.)
 - 2) It starts with a vowel.
-- 3) It includes of the 1 of the 4 normal fu'ivla forms, with the right prefix
-     from the beginning of the word, according to the [comprehensive fu'ivla
-     parser state table](table-simplified.txt), ignoring CVV-rn hyphenization\*:
+- 3) It includes 1 of the 4 normal fu'ivla forms, with the right prefix from
+     the beginning of the word, according to the [comprehensive fu'ivla parser
+     state table](table-simplified.txt), ignoring CVV-rn hyphenization\*:
 	- 1) ‘v’
 	- 2) ‘ccc’
 	- 3) ‘ccvv’
