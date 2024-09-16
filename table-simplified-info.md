@@ -211,7 +211,7 @@ further confirmed with a statement and an example that such a dipthong ‘never
 appears in gismu or lujvo, but may appear in fu'ivla’.
 
 Now a consonant followed by ‘i’ or ‘u’ followed by a vowel is no longer valid.
-Thus {baufklia} is no longer a valid fu'ivla, but {baufklai} is.
+Thus {baufklia} is no longer a valid fu'ivla, but {baufklai} still is.
 
 The wiki page has
 [a section](https://mw.lojban.org/papri/BPFK_Section:_Ban_on_consonant-glide-vowel_strings#Measures_to_rescue_the_existing_words)
