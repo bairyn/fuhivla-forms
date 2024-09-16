@@ -47,7 +47,8 @@ the following comprehensive fu'ivla conditions are true:
   applies; just consider the 4th, 5th, and 6th letters instead.  (See also the
   distinction between CC and C/C in CLL 4.1, and also notes about consonant
   triples in CLL 4.7.)
-- 2) It starts with a vowel.
+- 2) It starts with a vowel.  (‘.v’ morphologically separates it from anything
+  preceding it.)
 - 3) It includes 1 of the 4 normal fu'ivla forms, with the right prefix from
      the beginning of the word, according to the [comprehensive fu'ivla parser
      state table](table-simplified.txt), ignoring CVV-rn hyphenization\*:
