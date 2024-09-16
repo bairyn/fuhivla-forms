@@ -201,13 +201,20 @@ hypothetical CV word before that we want to exclude, so for decompositions that
 don't include a hypothetical prefix, the slinku'i-less table may be more
 suitable.
 
-### ilmentufa bugs
+### CgV-ban: CvG no longer valid
 
-ilmentufa is based on camxes, and the LLG ilmentufa Lojban parser fails to
-parse dipthongs in the expanded dipthong table in CLL 3.4 besides the first 4.
-However, CLL 4.7 specifies the expanded table, except for the last 2
-cmevla-only dipthongs, are permissible in fu'ivla, and even provides an example
-of a fu'ivla that uses the expanded dipthong table, which that parser fails to
-parse.  Thus ilmentufa fails to parse the valid fu'ivla {baufklia}, but it does
-parse {baufklai}.  The expanded dipthong table is useful in providing greater
-flexibility for fu'ivla.
+The LLG BPFK voted to remove CvG from fu'ivla
+(<https://mw.lojban.org/papri/BPFK_Section:_Ban_on_consonant-glide-vowel_strings>).
+CLL 3.4 specified additional diphthongs beyond the first 4 and originally
+specified that they were permissible in cmevla and fu'ivla.  CLL 4.7 originally
+further confirmed with a statement and an example that such a dipthong ‘never
+appears in gismu or lujvo, but may appear in fu'ivla’.
+
+Now a consonant followed by ‘i’ or ‘u’ followed by a vowel is no longer valid.
+Thus {baufklia} is no longer a valid fu'ivla, but {baufklai} is.
+
+The wiki page has
+[a section](https://mw.lojban.org/papri/BPFK_Section:_Ban_on_consonant-glide-vowel_strings#Measures_to_rescue_the_existing_words)
+that lists two methods to make a fu'ivla rejected by this rule possibly valid
+again: adding an apostrophe, and duplicating the ‘i’ or ‘u’, provided the
+result is still a valid fu'ivla.
