@@ -57,7 +57,7 @@ the following comprehensive fu'ivla conditions are true:
 	- 3) ‘ccvv’
 	- 4) ‘cvcv’
      \*: CLL 4.5 specifies lujvo non-y hyphenization with ‘r’ or, if invalid,
-     ‘n’, at the beginning of the word after a CVV rafsi.  To handle this case,
+     ‘n’, after a CVV rafsi at the beginning of the word.  To handle this case,
      if the first 4 letters have the form ‘cvvrcv’ (where letter 5 is not ‘n’)
      or ‘cvvnrv’, remove the 4th letter, and then try decomposing into rafsi
      according to the table.  No rafsi that starts with a hyphen letter ‘r’,
