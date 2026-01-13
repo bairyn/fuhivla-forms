@@ -12,23 +12,23 @@ include shorter affix variants.)
 CLL section 4.7 defines the morphology of fu'ivla. They are brivla that are not
 gismu or lujvo and that satisfy the other 4 of the 5 CLL conditions. This
 effectively means that fu'ivla consist of valid ‘y’-less brivla with either 1)
-a consonant/vowel cluster that cannot appear in lujvo (this is why stage 3
+a **consonant/vowel cluster** that cannot appear in lujvo (this is why stage 3
 fu'ivla are necessarily fu'ivla: the 4th, 5th, and 6th (+1 if the rafsi isn't
 the CVC variant) letters are consonants, but (section 4.1) no valid _initial_
 consonant pair starts with ‘r’, ‘n’, or ‘l’, and in lujvo consonant triples
 must have both pairs be valid _initial_ consonant pairs (i.e. what section CLL
 4.1 denotes as ‘CC’ rather than ‘C/C’) (see CLL section 3.7 and also CLL
 section 4.7's 2 ‘triple’ sentences), but fu'ivla do not have this restriction),
-or 2) starts with a vowel (‘.v’) that necessarily morphologically separates it
-from anything preceding it, or 3) including, if hyphenization is ignored, the
-right cv form, with 1 of the 4 normal fu'ivla forms (v, ccc, ccvv, and cvcv),
-either at the beginning or with a prefix that has the right rafsi decomposition
-parser state (one that leaves no possibility of a valid rafsi decomposition, by
-following the reductions listed in the table), according to the table, or 4)
-ending in 1 of the 4 fu'ivla tail forms (c, cv, cc, ccvcc) (only ‘cv’ ends in
-‘v’, so only it is conseqential for fu'ivla determination), if hyphenization is
-ignored.  (For cases #3 and #4, the table includes the slinku'i test (condition
-#3 in CLL 4.7).)
+or 2) **starts with a vowel** (‘.v’) that necessarily morphologically separates
+it from anything preceding it, or 3) including, if hyphenization is ignored,
+the right cv form, with 1 of **the 4 normal fu'ivla forms (v, ccc, ccvv, and
+cvcv)**, either at the beginning or with a prefix that has the right rafsi
+decomposition parser state (one that leaves no possibility of a valid rafsi
+decomposition, by following the reductions listed in the table), according to
+the table, or 4) ending in 1 of the 4 **fu'ivla tail form**s (c, **cv**, cc,
+ccvcc) (only ‘cv’ ends in ‘v’, so only it is conseqential for fu'ivla
+determination), if hyphenization is ignored.  (For cases #3 and #4, the table
+includes the slinku'i test (condition #3 in CLL 4.7).)
 
 [table-simplified.txt](table-simplified.txt)
 
