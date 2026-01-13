@@ -44,8 +44,8 @@ the fu'ivla tail form ‘cv’).
 If a word is a valid brivla without ‘y’, it is a fu'ivla iff at least one of
 the following comprehensive fu'ivla conditions are true:
 
-- 1) It includes a consonant/vowel cluster that cannot appear in lujvo.  Stage
-  3 fu'ivla have its 5th, 6th, and 7th\* letters as consonants, forming a
+- 1) It includes a **consonant/vowel cluster** that cannot appear in lujvo.
+  Stage 3 fu'ivla have its 5th, 6th, and 7th\* letters as consonants, forming a
   consonant triple, but in lujvo consonant triples have to end with a valid
   _initial_ consonant pair (CLL 3.7).  No initial consonant pair starts with
   ‘r’, ‘n’, or ‘l’, and stage 3 fu'ivla use one of these in the middle letter.
@@ -54,9 +54,9 @@ the following comprehensive fu'ivla conditions are true:
   applies; just consider the 4th, 5th, and 6th letters instead.  (See also the
   distinction between CC and C/C in CLL 4.1, and also notes about consonant
   triples in CLL 4.7.)
-- 2) It starts with a vowel.  (‘.v’ morphologically separates it from anything
-  preceding it.)
-- 3) It includes 1 of the 4 normal fu'ivla forms, with the right prefix from
+- 2) It **starts with a vowel**.  (‘.v’ morphologically separates it from
+  anything preceding it.)
+- 3) It includes 1 of **the 4 normal fu'ivla forms**, with the right prefix from
      the beginning of the word, according to the [comprehensive fu'ivla parser
      state table](table-simplified.txt), ignoring CVV-rn hyphenization\*:
 	- 1) ‘v’
@@ -70,7 +70,7 @@ the following comprehensive fu'ivla conditions are true:
      according to the table.  No rafsi that starts with a hyphen letter ‘r’,
      ‘n’, or ‘l’, has a consonant for its second letter, so you do not need to
      consider the original.
-- 4) It ends in the fu'ivla tail form ‘cv’ with the right prefix from the
+- 4) It ends in **the fu'ivla tail form ‘cv’** with the right prefix from the
      beginning of the word, according to the [comprehensive fu'ivla parser
      state table](table-simplified.txt) (there are actually 3 others, but they
      would only end cmevla), ignoring CVV-rn hyphenization at the beginning of
